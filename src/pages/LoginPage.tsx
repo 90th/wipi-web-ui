@@ -14,14 +14,16 @@ export default function LoginPage() {
     signIn({ password });
   }
 
-  return <Card>
-    <Card.Title>Login</Card.Title>
-    <Card.Body>
-      <form class="flex flex-col" onSubmit={doSignIn}>
-        <label class="text-slate-900 font-bold">Password</label>
-        <input ref={passwordElement} class="border-2 border-slate-600 rounded-md px-2" type="password" required/>
-        <Button class="my-2">Sign In</Button>
-      </form>
-    </Card.Body>
-  </Card>
+  return <div class="flex justify-center mt-16">
+    <Card class="w-128 !border-0 sm:!border-2 max-sm:w-full">
+      <Card.Title class="my-2">Login</Card.Title>
+      <Card.Body>
+        <form class="flex flex-col mt-8" onSubmit={doSignIn}>
+          <label class="text-slate-900 text-lg font-bold mb-1">Password</label>
+          <input ref={passwordElement} class="border-2 text-lg border-slate-600 rounded-md px-2 mb-8" type="password" required/>
+          <Button class="my-2">Sign In</Button>
+        </form>
+      </Card.Body>
+    </Card>
+  </div>
 }
