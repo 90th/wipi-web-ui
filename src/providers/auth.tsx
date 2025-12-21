@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosResponse, HttpStatusCode } from "axios";
 import log from "loglevel";
-import { Accessor, createContext, createSignal, onCleanup, onMount, ParentProps, PropsWithChildren, useContext } from "solid-js";
+import { Accessor, createComputed, createContext, createMemo, createSignal, onCleanup, onMount, ParentProps, PropsWithChildren, useContext } from "solid-js";
 
 export interface ILoginRequest {
   password: string;
@@ -9,7 +9,7 @@ export interface ILoginRequest {
 export interface IAuthContext {
   signIn: (request: ILoginRequest) => Promise<void>;
   signOut: () => void;
-  authToken: Accessor<string | null>
+  isAuthenticated: Accessor<boolean| null>
 };
 
 interface ILoginResponse {
@@ -29,6 +29,9 @@ export function AuthProvider(props: ParentProps) {
       localStorage.removeItem(authTokenEntry);
     }
   }
+  const isAuthenticated = createMemo(() => {
+    return authToken() != null;
+  })
 
   const signIn = async (request: ILoginRequest): Promise<void> => {
     log.info("Attempting sign in...");
@@ -68,7 +71,7 @@ export function AuthProvider(props: ParentProps) {
     })
   });
 
-  return <AuthContext.Provider value={{signIn, signOut, authToken}}>
+  return <AuthContext.Provider value={{signIn, signOut, isAuthenticated}}>
     {props.children}
   </AuthContext.Provider>;
 }

@@ -9,11 +9,7 @@ export interface IProtectedRoute<S extends string> extends RouteProps<S> {
 }
 
 export default function ProtectedRoute<S extends string>({ protection = "Authenticated", children, component, ...rest}: IProtectedRoute<S>) {
-  const { authToken } = useAuth();
-  const [isAuthenticated, setIsAuthenticated] = createSignal<boolean>(authToken() != null);
-  createEffect(() => {
-    setIsAuthenticated(authToken() != null);
-  });
+  const { isAuthenticated } = useAuth();
 
   const CheckAuth = (props: any) => {
     const location = useLocation();
