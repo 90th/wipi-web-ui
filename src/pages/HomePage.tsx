@@ -1,5 +1,6 @@
 import { useNavigate } from "@solidjs/router";
 import Button from "../components/ui/Button";
+import { Card } from "../components/ui/Card";
 import { useAuth } from "../providers/auth";
 import axios from "axios";
 
@@ -12,11 +13,43 @@ export default function HomePage() {
       alert("Authentication is bad");
     });
   }
-  return <>
-    <h1>Home Page</h1>
-    <div>
-      <Button class="mx-2" onClick={checkAuth}>Check Auth</Button>
-      <Button onClick={signOut}>Sign Out</Button>
+  return <div class="space-y-6">
+    <div class="flex items-center justify-between">
+      <h2 class="text-3xl font-bold tracking-tight">Dashboard</h2>
     </div>
-  </>
+    // example cards start
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <Card>
+        <Card.Title class="text-sm font-medium text-gray-500 dark:text-gray-400">System Status</Card.Title>
+        <Card.Body>
+          <div class="text-2xl font-bold text-green-600 dark:text-green-400">Online</div>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Uptime: 2 days 4 hours</p>
+        </Card.Body>
+      </Card>
+
+      <Card>
+        <Card.Title class="text-sm font-medium text-gray-500 dark:text-gray-400">Network Usage</Card.Title>
+        <Card.Body>
+          <div class="text-2xl font-bold">1.2 GB</div>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">↓ 45 Mbps ↑ 12 Mbps</p>
+        </Card.Body>
+      </Card>
+
+      <Card>
+        <Card.Title class="text-sm font-medium text-gray-500 dark:text-gray-400">Connected Devices</Card.Title>
+        <Card.Body>
+          <div class="text-2xl font-bold">5</div>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">2 Active</p>
+        </Card.Body>
+      </Card>
+    </div>
+  // example cards end
+    <Card>
+      <Card.Title>Quick Actions</Card.Title>
+      <Card.Body class="flex flex-wrap gap-4">
+        <Button onClick={checkAuth}>Check Auth Status</Button>
+        <Button onClick={signOut} class="bg-slate-600 hover:bg-slate-700 focus:ring-slate-500">Sign Out</Button>
+      </Card.Body>
+    </Card>
+  </div>
 }

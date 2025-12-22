@@ -6,7 +6,7 @@ export type Theme = "light" | "dark";
 
 export interface IThemeContext {
   theme: Accessor<Theme>;
-  setTheme:Setter<Theme>;
+  setTheme: Setter<Theme>;
 };
 
 const ThemeContext = createContext<IThemeContext>();
@@ -16,8 +16,13 @@ export function ThemeProvider(props: ParentProps) {
   createEffect(() => {
     log.info("Theme changed to: " + theme());
     localStorage.setItem("theme", theme());
+    if (theme() === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   });
-  return <ThemeContext.Provider value={{theme, setTheme}}>
+  return <ThemeContext.Provider value={{ theme, setTheme }}>
     {props.children}
   </ThemeContext.Provider>;
 }
