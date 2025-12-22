@@ -1,23 +1,18 @@
 import { JSX, ParentProps } from "solid-js"
-import { useTheme } from "../../providers/theme";
 
-export function Card({class: userClass, classList: userClassList, children, ...rest}: JSX.IntrinsicElements["div"]) {
-  const { theme } = useTheme();
-  const classAttr = "border-2 border-gray-300 w-96 rounded-lg px-2" + (userClass ? " " + userClass : "");
-  const classList = { "!border-gray-500": theme() == "dark", ...userClassList }
-  return <div class={classAttr} classList={classList} {...rest}>
+export function Card({ class: userClass, classList: userClassList, children, ...rest }: JSX.IntrinsicElements["div"]) {
+  const classAttr = "rounded-xl border border-gray-200 bg-white text-slate-950 shadow-sm dark:border-gray-800 dark:bg-gray-900 dark:text-slate-50 transition-colors duration-200" + (userClass ? " " + userClass : "");
+  return <div class={classAttr} classList={userClassList} {...rest}>
     {children}
   </div>
 }
 
-Card.Title = ({class: userClass, children, ...rest}: JSX.IntrinsicElements["h1"]) => {
-  const classAttr = "pt-6 pb-2 text-xl font-black text-center" + (userClass ? " " + userClass : "");
-  return <h1 class={classAttr} {...rest}>{children}</h1>;
+Card.Title = ({ class: userClass, children, ...rest }: JSX.IntrinsicElements["h3"]) => {
+  const classAttr = "flex flex-col space-y-1.5 p-6 font-semibold leading-none tracking-tight text-lg" + (userClass ? " " + userClass : "");
+  return <h3 class={classAttr} {...rest}>{children}</h3>;
 }
 
-Card.Body = ({class: userClass, classList: userClassList, children, ...rest}: JSX.IntrinsicElements["h1"]) => {
-  const { theme } = useTheme();
-  const classAttr = "border-t-2 border-gray-200 px-2 pt-4 pb-8" + (userClass ? " " + userClass : "");
-  const classList = { "!border-gray-500": theme() == "dark", ...userClassList }
-  return <div class={classAttr} classList={classList} {...rest}>{children}</div>;
+Card.Body = ({ class: userClass, classList: userClassList, children, ...rest }: JSX.IntrinsicElements["div"]) => {
+  const classAttr = "p-6 pt-0" + (userClass ? " " + userClass : "");
+  return <div class={classAttr} classList={userClassList} {...rest}>{children}</div>;
 }

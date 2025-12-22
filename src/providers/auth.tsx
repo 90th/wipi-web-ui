@@ -9,7 +9,7 @@ export interface ILoginRequest {
 export interface IAuthContext {
   signIn: (request: ILoginRequest) => Promise<void>;
   signOut: () => void;
-  isAuthenticated: Accessor<boolean| null>
+  isAuthenticated: Accessor<boolean | null>
 };
 
 interface ILoginResponse {
@@ -45,7 +45,7 @@ export function AuthProvider(props: ParentProps) {
     setAndPersistAuthToken(null);
   };
 
-  onMount(() => { 
+  onMount(() => {
     const reqInterceptor = axios.interceptors.request.use(config => {
       if (authToken)
         config.headers.Authorization = `Bearer ${authToken()}`;
@@ -71,7 +71,7 @@ export function AuthProvider(props: ParentProps) {
     })
   });
 
-  return <AuthContext.Provider value={{signIn, signOut, isAuthenticated}}>
+  return <AuthContext.Provider value={{ signIn, signOut, isAuthenticated }}>
     {props.children}
   </AuthContext.Provider>;
 }

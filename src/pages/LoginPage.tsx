@@ -5,7 +5,7 @@ import { Card } from "../components/ui/Card";
 import Button from "../components/ui/Button";
 
 export default function LoginPage() {
-  let passwordElement! : HTMLInputElement;
+  let passwordElement!: HTMLInputElement;
   const { signIn } = useAuth();
 
   const doSignIn = () => {
@@ -15,13 +15,15 @@ export default function LoginPage() {
   }
 
   return <div class="flex justify-center mt-16">
-    <Card class="w-128 !border-0 sm:!border-2 max-sm:w-full">
-      <Card.Title class="my-2">Login</Card.Title>
+    <Card class="w-96 !border-0 sm:!border-2 max-sm:w-full">
+      <Card.Title>Login</Card.Title>
       <Card.Body>
-        <form class="flex flex-col mt-8" onSubmit={doSignIn}>
-          <label class="text-lg font-bold mb-1">Password</label>
-          <input ref={passwordElement} class="border-2 text-lg border-slate-600 rounded-md px-2 mb-8" type="password" required/>
-          <Button class="my-2">Sign In</Button>
+        <form class="flex flex-col gap-4" onSubmit={doSignIn}>
+          <div class="flex flex-col gap-2">
+            <label class="text-sm font-medium">Password</label>
+            <input ref={passwordElement} class="flex h-10 w-full rounded-md border border-slate-600 bg-transparent px-3 py-2 text-sm placeholder:text-slate-400 focus:outline-none focus:border-rose-500 transition-colors disabled:cursor-not-allowed disabled:opacity-50" type="password" required />
+          </div>
+          <Button class="w-full">Sign In</Button>
         </form>
       </Card.Body>
     </Card>

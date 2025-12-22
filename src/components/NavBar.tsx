@@ -11,13 +11,17 @@ export default function NavBar() {
       setTheme("light");
     }
   }
-  return <nav class="flex w-full mb-2 shadow-gray-300 shadow-md" classList={{ "!shadow-gray-600": theme() == "dark" }}>
-      <div class="flex items-center w-max pl-4 pr-8 py-2">
-        <img src="/assets/wipi.svg" class="h-10 mr-2"/>
-        <h1 class="text-2xl font-black">WiPi Web UI</h1>
+  return <nav class="sticky top-0 z-50 w-full bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm transition-colors duration-200">
+    <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="/assets/wipi.svg" class="h-8 w-8" />
+        <h1 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">WiPi Web UI</h1>
       </div>
-      <div class="pr-4 w-max">
-        <Button onClick={switchTheme}>change theme</Button>
+      <div>
+        <Button onClick={switchTheme} class="text-sm">
+          {theme() === 'light' ? 'Dark Mode' : 'Light Mode'}
+        </Button>
       </div>
+    </div>
   </nav>;
 }
