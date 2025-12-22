@@ -17,7 +17,6 @@ export default function HomePage() {
     <div class="flex items-center justify-between">
       <h2 class="text-3xl font-bold tracking-tight">Dashboard</h2>
     </div>
-    // example cards start
     <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       <Card>
         <Card.Title class="text-sm font-medium text-gray-500 dark:text-gray-400">System Status</Card.Title>
@@ -43,7 +42,6 @@ export default function HomePage() {
         </Card.Body>
       </Card>
     </div>
-  // example cards end
     <Card>
       <Card.Title>Quick Actions</Card.Title>
       <Card.Body class="flex flex-wrap gap-4">

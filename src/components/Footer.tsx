@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer class="border-t border-gray-200 bg-white py-6 dark:border-gray-800 dark:bg-gray-950 transition-colors duration-200">
-      <div class="container mx-auto flex flex-col items-center justify-between gap-4 px-4 md:h-16 md:flex-row md:py-0">
+    <footer class="border-t border-gray-200 bg-white py-16 dark:border-gray-800 dark:bg-gray-950 transition-colors duration-200">
+      <div class="container mx-auto flex flex-col items-center justify-between gap-2 px-4 md:h-16 md:py-0">
         <p class="text-center text-sm leading-loose text-gray-500 dark:text-gray-400 md:text-left">
           Copyright (C) Rdbo - 2025 - All rights reserved.
         </p>
