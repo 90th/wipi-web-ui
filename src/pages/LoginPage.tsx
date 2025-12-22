@@ -19,7 +19,7 @@ export default function LoginPage() {
       <Card.Title class="my-2">Login</Card.Title>
       <Card.Body>
         <form class="flex flex-col mt-8" onSubmit={doSignIn}>
-          <label class="text-slate-900 text-lg font-bold mb-1">Password</label>
+          <label class="text-lg font-bold mb-1">Password</label>
           <input ref={passwordElement} class="border-2 text-lg border-slate-600 rounded-md px-2 mb-8" type="password" required/>
           <Button class="my-2">Sign In</Button>
         </form>
