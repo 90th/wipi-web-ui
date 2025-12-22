@@ -46,7 +46,7 @@ export default function HomePage() {
       <Card.Title>Quick Actions</Card.Title>
       <Card.Body class="flex flex-wrap gap-4">
         <Button onClick={checkAuth}>Check Auth Status</Button>
-        <Button onClick={signOut} class="bg-slate-600 hover:bg-slate-700 focus:ring-slate-500">Sign Out</Button>
+        <Button.Secondary onClick={signOut}>Sign Out</Button.Secondary>
       </Card.Body>
     </Card>
   </div>

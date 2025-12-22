@@ -3,8 +3,8 @@ import { useTheme } from "../providers/theme";
 
 export default function ThemeButton() {
   const { theme, setTheme } = useTheme();
-  const sunImage = '/public/assets/images/sun.svg';
-  const moonImage = '/public/assets/images/moon.svg';
+  const sunImage = '/assets/images/sun.svg';
+  const moonImage = '/assets/images/moon.svg';
   const img = createMemo(() => theme() == "dark" ? moonImage : sunImage);
 
   const switchTheme = () => {

@@ -10,6 +10,11 @@
   font-display: swap;
 }
 
+/* Defaults */
 body {
   font-family: "InterVar";
+}
+
+button {
+  @apply cursor-pointer select-none disabled:cursor-default disabled:pointer-events-none outline-none focus:outline-none;
 }
