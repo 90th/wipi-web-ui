@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @variant dark (&:where(.dark, .dark *));
+@variant sigma (&:where(.sigma, .sigma *));
 
 @font-face {
   font-family: "InterVar";

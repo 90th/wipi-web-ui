@@ -2,39 +2,40 @@ import axios, { AxiosError, AxiosResponse, HttpStatusCode } from "axios";
 import log from "loglevel";
 import { Accessor, createComputed, createContext, createEffect, createMemo, createSignal, onCleanup, onMount, ParentProps, PropsWithChildren, Setter, useContext } from "solid-js";
 
-export type Theme = "light" | "dark";
+export type Theme = "light" | "dark" | "sigma";
 
 export interface IThemeContext {
   theme: Accessor<Theme>;
   setTheme: Setter<Theme>;
-  sigmaMode: Accessor<boolean>;
-  setSigmaMode: Setter<boolean>;
 };
 
 const ThemeContext = createContext<IThemeContext>();
 
 export function ThemeProvider(props: ParentProps) {
   const [theme, setTheme] = createSignal<Theme>((localStorage.getItem("theme") as Theme | null) ?? "light");
-  const [sigmaMode, setSigmaMode] = createSignal(false);
 
   createEffect(() => {
     log.info("Theme changed to: " + theme());
     localStorage.setItem("theme", theme());
-    if (theme() === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+    switch (theme()) {
+      case "dark":
+        document.documentElement.classList.remove("light");
+        document.documentElement.classList.remove("sigma");
+        document.documentElement.classList.add("dark");
+        break;
+      case "sigma":
+        document.documentElement.classList.remove("light");
+        document.documentElement.classList.remove("dark");
+        document.documentElement.classList.add("sigma");
+        break;
+      default:
+        document.documentElement.classList.remove("dark");
+        document.documentElement.classList.remove("sigma");
+        break
     }
   });
 
-  createEffect(() => {
-    if (sigmaMode()) {
-      document.documentElement.classList.add("sigma");
-    } else {
-      document.documentElement.classList.remove("sigma");
-    }
-  });
-  return <ThemeContext.Provider value={{ theme, setTheme, sigmaMode, setSigmaMode }}>
+  return <ThemeContext.Provider value={{ theme, setTheme }}>
     {props.children}
   </ThemeContext.Provider>;
 }
