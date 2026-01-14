@@ -3,6 +3,7 @@ import { useAuth } from "../providers/auth";
 import { createEffect } from "solid-js";
 import { Card } from "../components/ui/Card";
 import Button from "../components/ui/Button";
+import Input from "../components/ui/Input";
 
 export default function LoginPage() {
   let passwordElement!: HTMLInputElement;
@@ -21,7 +22,7 @@ export default function LoginPage() {
         <form class="flex flex-col gap-4" onSubmit={doSignIn}>
           <div class="flex flex-col gap-2">
             <label class="text-sm font-medium">Password</label>
-            <input ref={passwordElement} class="flex h-10 w-full rounded-md border border-slate-600 bg-transparent px-3 py-2 text-sm placeholder:text-slate-400 focus:outline-none focus:border-rose-500 transition-colors disabled:cursor-not-allowed disabled:opacity-50" type="password" required />
+            <Input ref={passwordElement} type="password" required />
           </div>
           <Button class="w-full">Sign In</Button>
         </form>

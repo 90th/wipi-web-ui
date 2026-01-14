@@ -24,13 +24,20 @@ export default function NavBar() {
       "icon": <Cog stroke={activeColor}></Cog>
     }
   ];
-  return <nav class="sticky top-0 z-50 w-full bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm transition-colors duration-200">
+  return <nav class="
+    sticky top-0 z-50 w-full bg-white border-b border-gray-200 shadow-sm transition-colors duration-200
+    dark:bg-gray-800 dark:border-gray-700
+    sigma:bg-sigma-dark sigma:border-sigma-bright
+    ">
     <div class="w-full px-8 h-16 grid grid-cols-3 items-center">
       <A href="/" class="flex items-center gap-3 h-full px-1 justify-self-start">
         <Show when={theme() == "sigma"} fallback={<img src="/assets/wipi.svg" class="h-8 w-8" />}>
            <Sigma class="h-8 w-8" color="#00ffc8" />
         </Show>
-        <h1 class="text-xl font-bold tracking-tight text-gray-900 sigma:text-[#00ffc8] dark:text-white">WiPi Web UI</h1>
+        <h1 class="
+          text-xl font-bold tracking-tight text-gray-900
+          dark:text-white
+          sigma:text-sigma-bright">WiPi Web UI</h1>
       </A>
       <div class="justify-self-center">
         <Show when={isAuthenticated()}>

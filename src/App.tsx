@@ -14,7 +14,11 @@ const App: Component = () => {
   //       and removing the ProtectedRoute wrapper
   const Layout = (props: ParentProps) => {
     return (<>
-      <div class="min-h-screen bg-gray-50 text-slate-900 dark:bg-gray-900 dark:text-slate-100 transition-colors duration-200">
+      <div class="
+        min-h-screen bg-gray-50 text-slate-900 transition-colors duration-200
+        dark:bg-gray-900 dark:text-slate-100
+        sigma:bg-sigma-dark sigma:text-sigma-bright
+      ">
         <NavBar />
         <main class="container mx-auto px-4 py-6">
           {props.children}

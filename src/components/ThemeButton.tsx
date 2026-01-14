@@ -8,7 +8,7 @@ export default function ThemeButton() {
   const sunImage = '/assets/images/sun.svg';
   const moonImage = '/assets/images/moon.svg';
   const img = createMemo(() => theme() == "dark" ? moonImage : sunImage);
-  const SECRET_HOLD_DELAY_MS = 5000;
+  const SECRET_HOLD_DELAY_MS = 3000;
   let timeout : number | undefined;
 
   const toggleTheme = () => {
@@ -47,10 +47,13 @@ export default function ThemeButton() {
   return <button
     onPointerDown={startHold}
     onPointerUp={stopHold}
-    class="cursor-pointer select-none px-2 rounded-full py-2 flex items-center justify-center border-2 border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+    class="
+    cursor-pointer select-none px-2 rounded-full py-2 flex items-center justify-center border-2 border-gray-200 transition-colors hover:bg-gray-200
+    dark:border-gray-700 dark:hover:bg-gray-700
+    sigma:border-sigma-bright sigma:hover:bg-sigma-dim"
   >
     <Show when={theme() == "sigma"} fallback={<img class="h-8" src={img()} />}>
-       <Sigma class="h-8 w-8 text-[#00ffc8]" />
+       <Sigma class="h-8 w-8" color="#00ffc8" />
     </Show>
   </button>
 }
